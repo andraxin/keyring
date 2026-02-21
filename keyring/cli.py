@@ -93,7 +93,7 @@ class CommandLineTool:
         )
         try:
             default_user = getpass.getuser()
-        except OSError:
+        except OSError, ModuleNotFoundError:
             default_user = None
         self.parser.add_argument(
             'username',
