@@ -94,6 +94,7 @@ class CommandLineTool:
         self.parser.add_argument(
             'username',
             nargs="?",
+            default=getpass.getuser(),
         )
         completion.install(self.parser)
 
