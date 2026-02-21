@@ -91,10 +91,14 @@ class CommandLineTool:
             'service',
             nargs="?",
         )
+        try:
+            default_user = getpass.getuser()
+        except OSError:
+            default_user = None
         self.parser.add_argument(
             'username',
             nargs="?",
-            default=getpass.getuser(),
+            default=default_user,
         )
         completion.install(self.parser)
 
