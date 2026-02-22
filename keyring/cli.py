@@ -93,7 +93,8 @@ class CommandLineTool:
         )
         try:
             default_user = getpass.getuser()
-        except (OSError, ModuleNotFoundError):
+        except (OSError, KeyError, ModuleNotFoundError):
+            # on recent Python versions (>=3.13), `OSError` should suffice
             default_user = None
         self.parser.add_argument(
             'username',
