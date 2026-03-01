@@ -46,7 +46,7 @@ def mocked_get_credential():
 def test_set_no_user(monkeypatch, mocked_set):
     for name in ('LOGNAME', 'USER', 'LNAME', 'USERNAME'):
         monkeypatch.delitem(os.environ, name, raising=False)
-    monkeypatch.setattr(os, 'getuid', lambda: -1)
+    monkeypatch.setattr(os, 'getuid', lambda: -1, raising=False)
     tool = cli.CommandLineTool()
     tool.service = 'svc'
     tool.username = 'usr'
